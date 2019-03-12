@@ -24,7 +24,7 @@
 
     <!-- Link to my javascript file -->
     <script src="./assets/javascript/game.js"></script>
-    -->
+
     <!--  Include my style sheet-->
     <link rel="stylesheet" src="./assets/css/style.css">
 
@@ -63,19 +63,42 @@
     <script>
         // variable and array declarations
         // seed wordArray with values
-        var wordArray = [
+        var wordsArray = [
             "cat",
-            "dog",
+            "poster",
             "rat",
-            "rabbit",
+            "platypus",
             "elephant"
         ];
 
-        // array to hold words to guess
         var winCount = 0; //number of wins
         var lossCount = 0; //number of losses
         var keysGuessed = []; // array to hold letters guessed
         var keyPressed = "";
+        var answerArray = [];
+        var lettersLeft = ""
+
+        //select word from array at random
+
+        var word = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+
+        console.log(word);
+        // create answerr array and fill it
+
+        for (i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+            // console.log(i);
+            // console.log(word);
+            // console.log("Word Length" + word.length)
+            // console.log(answerArray)
+        }
+
+        lettersLeft = word.length; // 
+        While(lettersLeft > 0) {
+
+
+
+        }
 
 
         document.addEventListener('keyup', function(event) { // wrap in anon function so it only runs when triggered
