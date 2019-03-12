@@ -19,31 +19,40 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Link to my javascript file-->
-    <script src="./assets/javascript/javascript.js"></script>
+    <!--jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <!-- Link to my javascript file -->
+    <script src="./assets/javascript/game.js"></script>
+    -->
     <!--  Include my style sheet-->
     <link rel="stylesheet" src="./assets/css/style.css">
 
 
 </head>
 
-<body>
+<body class="keyboard" )>
     <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">Game Name Here</h1>
+        <h1 class="display-4">GuessWord Game</h1>
         <hr class="mbt">
+        <h2>Welcome to the GuessWord Game</h2>
+        <br><br>
+        <p #100>Type a key</p>
+        <br><br>
+
+
+
+
+        <br><br><br><br>
+
     </div>
 
     <div class="container">
         <p class=""></p>
 
-        keyup
-
-
-
-
-
-        <button type=" button" class="btn btn-primary">Primary</button>
+        <p>buttons:</p>
+        <br><br>
+        <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-success">Success</button>
         <button type="button" class="btn btn-info">Info</button>
 
@@ -51,17 +60,43 @@
 
     </div>
 
-
     <script>
-        function keyPress() {
+        // variable and array declarations
+        // seed wordArray with values
+        var wordArray = [
+            "cat",
+            "dog",
+            "rat",
+            "rabbit",
+            "elephant"
+        ];
+
+        // array to hold words to guess
+        var winCount = 0; //number of wins
+        var lossCount = 0; //number of losses
+        var keysGuessed = []; // array to hold letters guessed
+        var keyPressed = "";
 
 
+        document.addEventListener('keyup', function(event) { // wrap in anon function so it only runs when triggered
+            var rawkey = event.which || event.keyCode; // cross browser b/c firefox doesn't support event.keyCode
 
-        }
+            //take UCS 02 values and convert to a string representing the key's value
+            keyPressed = String.fromCharCode(event.keyCode); //take UCS 02 values and convert to a string
+
+            console.log("The letter " + keyPressed); // for testing 
+            $("#100").html(keyPressed);
+        });
+
+
+        // game.restart = function ()
+        // game.start 
+        // game.display = '';   // the current dash display
+
+        //  game.wrong = '';     // the wrong letters guessed 
+        //game.answer = '';   // the correct answer for this round
+        // game.wrongCount = 0
     </script>
-
-
-
 
 
 </body>
