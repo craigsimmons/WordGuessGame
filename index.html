@@ -64,62 +64,56 @@
         // variable and array declarations
         // seed wordArray with values
         var wordsArray = [
-            "cat",
-            "poster",
-            "rat",
-            "platypus",
-            "elephant"
+            'cat',
+            'witch',
+            'vampire',
+            'platypus',
+            'element'
         ];
 
-        var winCount = 0; //number of wins
-        var lossCount = 0; //number of losses
-        var keysGuessed = []; // array to hold letters guessed
-        var keyPressed = "";
+        // var winCount = 0; //number of wins
+        // var lossCount = 0; //number of losses
+        // var keysGuessed = []; // array to hold letters guessed
+        var keyPressed = '';
         var answerArray = [];
 
-
         document.addEventListener('keyup', function(event) { // wrap in anon function so it only runs when triggered
-            var rawkey = event.which || event.keyCode; // cross browser b/c firefox doesn't support event.keyCode
+            // var rawkey = event.which || event.keyCode; // cross browser b/c firefox doesn't support event.keyCode
 
-            //take UCS 02 values and convert to a string representing the key's value
-            keyPressed = String.fromCharCode(event.keyCode); //take UCS 02 values and convert to a string
-
-            console.log("The letter " + keyPressed); // for testing 
-            $("#100").html(keyPressed);
+            // take UCS 02 values and convert to a string representing the key's value
+            keyPressed = String.fromCharCode(event.keyCode); // take UCS 02 values and convert to a string
+            console.log('Your letter is' + keyPressed); // for testing
+            // $("#100").html(keyPressed);
         });
 
-
-        //select word from array at random
+        // select word from array at random
         var word = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+        console.log(word); // for testing
 
-        console.log(word);
-
-        for (i = 0; i < word.length; i++) { // create answerr array and fill it
-            answerArray[i] = "_";
+        for (var i = 0; i < word.length; i++) { // create answerr array and fill it
+            answerArray[i] = '';
             // console.log(i);
             // console.log(word);
-            // console.log("Word Length " + word.length)
-            // console.log(answerArray)
+            // console.log('Word Length ' + word.length);
+            // console.log(answerArray);
         }
-
+        // redo this block below
         var lettersLeft = word.length;
         //  while (lettersLeft > 0); {
-
-        alert(answerArray.join(" ")); //(use join to cat array values to string)
+        // alert(answerArray.join(" ")); //(use join to cat array values to string)
         //  }
 
-
-        //Take imput from user
+        // Take input from user
 
         if (keyPressed.length === null) {
-            alert("No letter selected. Try again!")
+            alertMessage('No letter selected. Try again!');
         } else if (keyPressed.length !== 1) {
-            alert("Enter a single letter only. Try again!");
+            alertMessage('Enter a single letter only. Try again!');
         } else { // Update the game state with the guess
-            for (j = 0; j < word.length; j++) {
+            for (var j = 0; j < word.length; j++) {
                 if (word[j] === keyPressed) {
                     answerArray[j] = keyPressed;
-                    lettersLeft--;
+                    lettersLeft = lettersLeft--;
                 }
             }
         }
