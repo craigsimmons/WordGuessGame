@@ -39,6 +39,7 @@ console.log('Your letter is ' + keyPressed); // for testing... REMOVE
 // get buttons by their id, use variables as objects later
 var buttonStart = document.getElementById("start");
 var buttonEnd = document.getElementById("end");
+var buttonEndMusic = document.getElementById("stop");
 
 // Starts the game
 buttonStart.addEventListener('click', function(event) {
