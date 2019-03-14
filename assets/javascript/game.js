@@ -3,12 +3,26 @@
 
         // variable and array declarations
         // seed wordArray with values
-        var wordsArray = [
-            'cat',
-            'witch',
-            'vampire',
-            'platypus',
-            'element'
+    var wordsArray = [
+            "pneumonia",
+            "anthrax",
+            "diphtheria",
+            "leprosy",
+            "rabies",
+            "listeria",
+            "ebola",
+            "meningitis",
+            "hepatitis",
+            "measles",
+            "smallpox",
+            "pertussis",
+            "mumps",
+            "influenza",
+            "chickenpox",
+            "rubella",
+            "malaria",
+            "typhus",
+            "tuberculosis"
         ];
 
         var keyPressed = '';
