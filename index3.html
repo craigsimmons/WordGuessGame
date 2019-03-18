@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hangman Game</title>
+    <meta charset="UTF-8">
+    <meta author="Craig Simmons">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+  
+    <!--jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Link to my javascript file -->
+    <script src="./assets/javascript/game.js"></script>
+
+    <!--  Include my style sheet-->
+    <link src="./assets/css/style.css" rel="stylesheet">
+
+    <!-- inline style for debuigging. overrides borders in Bootstrap-->
+    <style>
+       * {
+        border: 1px solid red !important;
+        }
+    
+        .crazy {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+        .bggray {
+            background-color: #cccccc;
+        }
+        #right {
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+
+<body class="keyboard bggrey">
+    <!--
+    <audio src="./assets/images/ERtheme.mp3" type="audio/mpeg" loop autoplay>
+        Error: your web browser does not support this audio player.
+    </audio>
+
+    -->
+    <!-- Using bootstrap, wrap site in a div container -->
+    <div class="container">  
+        <div class="row"> 
+            <div class="col-md-8">
+                <h1 class="display-4 crazy">Guess the Mystery Word: <br>
+                <span class="text-primary">Infectious</span>
+                <span class="text-success">Disease</span>
+                <span class="text-danger">Edition</span>
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <img id="right" scr="#" alt="Image of virus">
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row"> 
+                <div class="col-md-6">
+                    <h2>Welcome!</h2>
+                    <p id="50 crazy">Current Word: </p>
+                    <img src="./assets/images/virusbg.jpg"> <!--for diagnosing an issue with images not loading -->
+                    <br><br><br>
+                    <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
+                    <button id="end" type="button" class="btn btn-danger crazy">End Game</button>
+                    <button id="stop" type="button" class="btn btn-danger crazy">Stop Music</button>
+                </div>
+                <div class="col-md-6">
+                    <p id="#100" class="crazy">Type a key</p>
+                    <p id="#101" class="crazy">Wins</p>
+                    <p id="#102" class="crazy">Losses</p>
+                    <p id="#103" class="crazy"># of Guesses left</p>
+                    <p id="#104" class="crazy">Letters Guessed:</p>
+                    <p id="#105" class="crazy">_ _ _ _ _ _</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" height="75px">
+                    <p class="crazy"> place some text here</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

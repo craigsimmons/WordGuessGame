@@ -11,46 +11,6 @@ function addInts(int) {
     }
     return answer;
 
-}
-
- 
-<script>
-//Wrap JS in doc.ready to ensure no js executes before entire page onloads
-// $(document).ready(function() {
-
-// variable and array declarations
-// seed wordArray with values
-var wordsArray = [
-    'cat',
-    'witch',
-    'vampire',
-    'platypus',
-    'element'
-];
-
-var keyPressed = '';
-var lettersLeft = '';
-var answerArray = [];
-
-document.addEventListener('keyup', function(event) { 
-
-// take UCS 02 values and convert to a string representing the key's value
-keyPressed = String.fromCharCode(event.keyCode); // take UCS 02 values and convert to a string
-console.log('Your letter is ' + keyPressed); // for testing
-});
-
-var buttonStart = document.getElementById("start");
-var buttonEnd = document.getElementById("end");
-
-/*
-buttonStart.addEventListener('click', function(event) {
-    document.location.href = '#';
-});
-
-buttonEnd.addEventListener('click', function(event) {
-    document.location.href = 'index.html';
-});
-*/
 
 
 
@@ -64,7 +24,13 @@ for (var i = 0; i < word.length; i++) { // create answerr array and fill it
     console.log(answerArray);
 }
 
-
+function () {
+    var workArray = answerArray;
+    for (var i = 0; i < word.length; i++) { 
+     workArray[i] = '_';
+     console.log(answerArray);
+     console.log(workArray)
+    }
 
 /*
 // redo this block below
