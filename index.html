@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-us">
 
 <head>
     <title>Hangman Game</title>
@@ -40,30 +40,47 @@
 </head>
 <body>
     <div class="container">
-            <div class="jumbotron crazy">
-                    <h1>Word Guess Game</h1> 
-                    <hr>
-                    <p id ="winscore">Wins:</p>
-                    <br>
-                    <p id ="losescore">Losses:</p> 
-                    <br>
-                    <p id ="guessesremain">guesses remaining</p>
-                    <br>
-                    <p id ="guessestaken">letters selected:</p>
-                    <br>
-                    <p id ="underscores">Spaces: </p>
-                    <br>
-                    <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
-                    <button id="end" type="button" class="btn btn-danger crazy">End Game</button>
-                    <button id="stop" type="button" class="btn btn-danger crazy">Stop Music</button>
+        <div class="row"> 
+            <div class="col-md-8">
+                <h1 class="display-4 crazy">Word Guess:<br>
+                <span class="text-primary">Infectious</span>
+                <span class="text-success">Disease</span>
+                <span class="text-danger">Edition</span>
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <img id="right" scr="#" alt="Image of virus" height="300px" width="400px">
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <br><br>
+                <p class="crazy">Display Current Word:<span class="currentword"></span></p>
+                <p class="crazy">Type a key: <span class="keytyped"></span></p>
+                <p class="crazy">Guesses Left: <span class="guessesremain"></span></p>
+                <p class="crazy">Guesses Made: <span class="guessestaken"></span></p>
+                <p class="crazy">Letters Guessed: <span class="lettersguessed"></span></p>
+                <p class="crazy">Wins: <span class="winscore"></span></p>
+                <p class="crazy">Losses: <span class="losescore"></span></p>
+                <br><hr><br>
+                <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
+                <button id="end" type="button" class="btn btn-danger crazy">End Game</button>
+                <button id="stop" type="button" class="btn btn-primary crazy">Hint</button>
+                <br><br>
+            </div>
+
+            <div class="col-md-6">
+                    <br><br>
+                    <img src="#" alt="alt text for screen readers" height="200px" width="200px"><br>
+                    <h1 class="display-4 crazy">Guess the Mystery Word ! </h1>
+                    <p class="display-4 crazy"><span class="puzzle"></span></p>  
+            </div>
+        </div>
+
     </div>
     <!-- Link to my javascript file -->
     <script src="./assets/javascript/game.js"></script>
 </body>
-
-
-
-
 
 </html>
