@@ -21,8 +21,7 @@
     <!--jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Link to my javascript file -->
-    <script src="./assets/javascript/game.js"></script>
+    
 
     <!--  Include my style sheet-->
     <link rel="stylesheet" src="./assets/css/style.css">
@@ -44,21 +43,23 @@
             <div class="jumbotron crazy">
                     <h1>Word Guess Game</h1> 
                     <hr>
-                    <p>Wins</p>
+                    <p id ="winscore">Wins:</p>
                     <br>
-                    <p>Losses</p> 
+                    <p id ="losescore">Losses:</p> 
                     <br>
-                    <p># guesses remaining</p>
+                    <p id ="guessesremain">guesses remaining</p>
                     <br>
-                    <p>Something else</p>
-            </div>
-        
-
-
-
-
-
+                    <p id ="guessestaken">letters selected:</p>
+                    <br>
+                    <p id ="underscores">Spaces: </p>
+                    <br>
+                    <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
+                    <button id="end" type="button" class="btn btn-danger crazy">End Game</button>
+                    <button id="stop" type="button" class="btn btn-danger crazy">Stop Music</button>
+        </div>
     </div>
+    <!-- Link to my javascript file -->
+    <script src="./assets/javascript/game.js"></script>
 </body>
 
 
