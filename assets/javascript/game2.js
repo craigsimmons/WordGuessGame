@@ -40,15 +40,15 @@ console.log('Your letter is ' + keyPressed); // for testing... REMOVE
 // get buttons by their id, use variables as objects later
 var buttonStart = document.getElementById("start");
 var buttonEnd = document.getElementById("end");
-var buttonEndMusic = document.getElementById("stop");
+var buttonHint = document.getElementById("hint");
 
 // Starts the game
-buttonStart.addEventListener('click', function(event) {
+buttonStart.addEventListener('click', function (event) {
   document.location.href = 'http://www.google.com';
 });
         
 //Ends the game
-buttonEnd.addEventListener('click', function(event) {
+buttonEnd.addEventListener('click', function (event) {
   document.location.href = 'http://www.microsoft.com';
 });
 
