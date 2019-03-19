@@ -1,12 +1,29 @@
 * {
     border: 1px solid red !important;
-}
-
-
-.crazy {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-body {
-    background-image: url("./assets/images/virusbg.jpg");
     }
+
+    .crazy {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    .ltbluebg {
+    background-color: lightskyblue
+    }
+
+    .downsize {
+    font-size: 40px;
+    }
+
+    .displaytext {
+        font-size: 24px;
+        font-display: bolder;
+    }
+    .instructiontext {
+        font-size: 16px;
+        font-display: bolder;
+    }
+
+    body {
+    background-image: url("./assets/images/bacteria_bgimage.jpg");
+    }
+

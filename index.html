@@ -25,7 +25,7 @@
     <link rel="stylesheet" src="./assets/css/style.css">
 
     <!-- inline style for debuigging. overrides borders in Bootstrap-->
-    <style>
+  <style>
        * {
         border: 1px solid red !important;
         }
@@ -33,54 +33,100 @@
         .crazy {
         font-family: "Comic Sans MS", cursive, sans-serif;
         }
+
+        .ltbluebg {
+        background-color: lightskyblue
+        }
+
+        .downsize {
+        font-size: 40px;
+        }
+
+        .displaytext {
+            font-size: 24px;
+            font-display: bolder;
+        }
+        .instructiontext {
+            font-size: 16px;
+            font-display: bolder;
+        }
+
+        body {
+        background-image: url("./assets/images/bacteria_bgimage.jpg");
+        }
+      
+        
     </style>
 
 </head>
 <body>
-    <div class="container">
+    <div class="container ltbluebg ">
         <div class="row"> 
             <div class="col-md-8">
-                <h1 class="display-4 crazy">Word Guess:<br>
-                <span class="text-primary">Infectious</span>
-                <span class="text-success">Disease</span>
-                <span class="text-danger">Edition</span>
-                </h1>
+                <h1 class="text-center display-2 crazy">Word Guess:</h1>
+                <p class="text-center crazy">
+                <span class="downsize text-primary">Infectious</span>
+                <span class="downsize text-success">Disease</span>
+                <span class="downsize text-danger">Edition</span>
+                </p>
             </div>
-            <div class="col-md-4">
-                <img id="right" scr="#" alt="Image of virus" height="300px" width="400px">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <br><br>
-                <p class="crazy">Display Current Word:<span class="currentword"></span></p>
-                <p class="crazy">Type a key: <span class="keytyped"></span></p>
-                <p class="crazy">Guesses Left: <span class="guessesremain"></span></p>
-                <p class="crazy">Guesses Made: <span class="guessestaken"></span></p>
-                <p class="crazy">Letters Guessed: <span class="lettersguessed"></span></p>
-                <p class="crazy">Wins: <span class="winscore"></span></p>
-                <p class="crazy">Losses: <span class="losescore"></span></p>
-                <br><hr><br>
-                <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
-                <button id="end" type="button" class="btn btn-danger crazy">End Game</button>
-                <button id="hint" type="button" class="btn btn-primary crazy">Hint</button>
-                <br><br>
-            </div>
-
-            <div class="col-md-6">
-                    <br><br>
-                    <img src="#" alt="alt text for screen readers" height="500px" width="200px">
-                    <br><br><br>
-                    <h1 class="display-4 crazy">Guess the Mystery Word ! </h1>
-                    <p class="display-4 crazy"><span class="puzzle"></span></p>  
+            <div class="align-middle col-md-4">
+                <img src="./assets/images/bacteria.jpg" height="100%" width="100%" alt="Image of rampaging bacteria">
             </div>
         </div>
+        <div class="jumbotron ltbluebg">
+            <div class="row">
+                <div class="col-md-6">
+                    <br>
+                    <p class="text-center displaytext crazy">How to Play:</p>
+                    <p class="instructiontext crazy">Try to guess the mystery word! This site will randomly select a word 
+                        and display dashes in place of letters.<br><br> 
+                        Guess each letter in the word to win. If you choose a 
+                        letter that's not in the mystery word, you'll lose a guess and will need to select again. 
+                        <br><br> If you make 10 incorrect guesses before you solve the mystery word, 
+                        you'll lose the game and will almost certinly contract one of the game's infections. 
+                        <br><br> Click the Start button to play. Select letters with the keybord.
+                    </p>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4">
+                            <button id="start" type="button" class="float-left btn btn-success crazy">Start Game</button>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                                <button id="end" type="button" class="float-right btn btn-danger crazy">End Game</button>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                        <br>
+                        <h1 class="text-center downsize crazy">Mystery Word: </h1><br>
+                        <p class="text-center downsize crazy"><span class="bg-warning puzzle">_ _ _ _ _ _ _</span></p>
+                       <br>
+                       <p class="displaytext crazy">Letters Guessed: <span class="lettersguessed"></span></p>
+                        <p class="displaytext crazy">Incorrect Guesses: <span class="guessestaken"></span></p>
+                        <p class="displaytext crazy">Wins: <span class="winscore"></span></p>
+                        <p class="displaytext crazy">Losses: <span class="losescore"></span></p>
+                </div>
+            </div>
+        </div>
+    <div class="text-center row">
+            <p class="float-left displaytext crazy">Display Current Word (for testing):
+                <mark class="currentword">used for testing</mark></p>
+            <br><br>
+            <p class="float-right displaytext crazy">Type a key (for testing):
+                <mark class="keytyped">used for testing</mark></p>
 
     </div>
+
     <!-- Link to my javascript file -->
+
     <script src="./assets/javascript/game.js"></script>
+
     <script> // do I need these functions?
+
         $(document).on("click", function(){
         })
         document.onkeyup = function () {
