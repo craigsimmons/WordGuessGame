@@ -2,62 +2,26 @@
 <html lang="en-us">
 
 <head>
-    <title>Hangman Game</title>
+    <title>Wortd Guess Game</title>
     <meta charset="UTF-8">
     <meta author="Craig Simmons">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <!-- Bootstrap libraries-->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- Latest compiled JavaScript
+    <!-- Latest compiled and minified CSS, jQuery, and JS 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>         
-    -->
-    <!-- Popper JS 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-     -->
-    <!--jQuery -->
+        -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!--  Include my style sheet-->
-    <link rel="stylesheet" src="./assets/css/style.css">
-
-    <!-- inline style for debuigging. overrides borders in Bootstrap-->
-  <style>
-       * {
-        border: 1px solid red !important;
-        }
-    
-        .crazy {
-        font-family: "Comic Sans MS", cursive, sans-serif;
-        }
-
-        .ltbluebg {
-        background-color: lightskyblue
-        }
-
-        .downsize {
-        font-size: 40px;
-        }
-
-        .displaytext {
-            font-size: 24px;
-            font-display: bolder;
-        }
-        .instructiontext {
-            font-size: 16px;
-            font-display: bolder;
-        }
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- link to my javascript file is at bottom of <body>-->
+    <style>
         body {
-        background-image: url("./assets/images/bacteria_bgimage.jpg");
-        }
-      
-        
+                background-image: url("assets/images/bacteria_bgimage.jpg");
+                }
     </style>
-
+            
 </head>
 <body>
     <div class="container ltbluebg ">
@@ -122,16 +86,6 @@
     </div>
 
     <!-- Link to my javascript file -->
-
     <script src="./assets/javascript/game.js"></script>
-
-    <script> // do I need these functions?
-
-        $(document).on("click", function(){
-        })
-        document.onkeyup = function () {
-        }
-    </script>
 </body>
-
 </html>
