@@ -1,7 +1,5 @@
-// Global variable and array declarations
-
-// Seed wordArray with values
-var wordsListArr = ["pneumonia",
+// Global variable and array declarations follow below:
+var wordsListArr = ["pneumonia",  // Seed wordArray with values
   "anthrax",
   "diphtheria",
   "leprosy",
@@ -21,78 +19,107 @@ var wordsListArr = ["pneumonia",
   "typhus",
   "tuberculosis"
 ];
-
-// holds computer's random word choice
-var wordToGuessStr = "";
-// use this array to hold letters from computer's selected word
-var wordLettersArr = [];
-//number of spaces (underlines) we display; should be equal to the selected word length
-var numSpacesStr = 0;
-// holds info on which key was pressed
-var keyPressedStr = "";
-// Array to hold player guesses and underlines (e.g. "_") for manipulation and display
-var answerArrayArr = [];
-// Array to hold incorrectly guessed letters
-var missedLettersArr = [];
-// Various counters
-// player guesses left counter starts at 10. Roughly the # of guesses if we played real hangman
-var guessesLeftStr = 10;
-var lossCountStr = 0;
-var winCountStr = 0;
+var wordToGuessStr = ""; // holds computer's random word choice
+var wordLettersArr = []; // use this array to hold letters from computer's selected word
+var keyPressedStr = ""; // holds info on which key was pressed
+var answerArrayArr = []; // Array to hold player guesses and underlines (e.g. "_") for manipulation and display
+var remainingLettersInt = 0; // = to length of random word. used for loops, etc 
+var missedLettersArr = []; // Array to hold incorrectly guessed letters
+var guessesLeftInt= 10; // player guesses left counter starts at 10.
+var lossCountInt = 0; // loss counter
+var winCountInt = 0; // win counter
 var letterCompareBoo = true;  // boolean 
 
-// select button and give an onclick function -- jQuery
-$("#start").on("click", startGame);
-$("#end").on("click", startGame);
-//DO I NEED TO TURN THIS OFF? (document).off(keyup)
+/* ------------- End variable declarations  ------------------- */
+function startGame () { };
+/* Event handlers */
+$("#start").on("click", startGame); // select button and give an onclick function -- jQuery
+
+$("#end").on("click", startGame); // select button and give an onclick function -- jQuery
+
+$(document).keyup(function(event) { // Capture keyup event w/ jQuery
+  keyPresseStr = String.fromCharCode(event.keyCode).toLowerCase(); //translate keycode to charcode and make lowercase
+  console.log('Your letter is ' + keyPressedStr); // for testing... 
+});
 
  $("#currentword").text(wordToGuessStr);
  $("#keytyped").text(keyPressedStr);
- $("#guessesremain").text(guessesLeftStr);
+ $("#guessesremain").text(guessesLeftInt);
  $("#lettersguessed").text(missedLettersArr.join("  "));
- $("#winscore").text(winCountStr);
- $("#losescore").text(lossCountStr);
+ $("#winscore").text(winCountInt);
+ $("#losescore").text(lossCountInt);
  $("#puzzle").text(answerArrayArr.join(" "));
 
-function startGame() {
-  $(document).keyup(function(event){ 
-    keyPressedStr = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log('Your letter is ' + keyPressedStr); 
-  });
-//DO I NEED TO TURN ther keyup OFF?
-  // $(document).off(keyup);
- 
-  wordToGuessStr = wordsListArr[Math.floor(Math.random() * wordsListArr.length)];
-  console.log("Computer's selected word " + wordToGuessStr);
-  wordLettersArr = wordToGuessStr.split("");
-  console.log("these are the letters = " + wordLettersArr);
-  numSpacesStr = wordToGuessStr.length
-  console.log("number of spaces/blanks = " + numSpacesStr);
-  
-  // for (var i = 0; i < wordToGuessStr.length; i++) { 
-  for (var i = 0; i < numSpacesStr; i++) { 
-    answerArrayArr.push("_ ");
-  }
+ wordToGuessStr = wordsListArr[Math.floor(Math.random() * wordsListArr.length)];
+ console.log("Computer's selected word " + wordToGuessStr);
+ wordLettersArr = wordToGuessStr.split("");
+ console.log("these are the letters = " + wordLettersArr);
 
-  for (var j = 0; j < numSpacesStr; i++) {
-      if (wordToGuessStr[i] === keyPressedStr)  { 
-        letterCompareBoo = true;
-        console.log("Letter Selected: " + keyPressedStr);
-      }
-  }
-  
-  if (letterCompareBoo) {
-    for (var k = 0; k < numSpacesStr; j++) {
-        if (wordToGuessStr[j] === keyPressedStr) {
-          answerArrayArr[j] = keyPressedStr;
-        }
-        else {  
-          missedLettersArr.push(keyPressedStr);
-          guessesMadeStr++;
-          guessesLeftStr--;
-          console.log("Guesses Made:" + guessesMadeStr); 
-          console.log("Guesses Left:" + guessesLeftStr); 
-        }
+
+function populateAnswerArray () {
+ for ( var i = 0; i < wordToGuessStr.length; i++) {
+   answerArrayArr[i] = "_";
+ }
+ $("#puzzle").text(answerArrayArr.join(" "));
+}
+
+function updateAnswerArray () {
+  for (var j = 0; j < wordToGuessStr.length; j++) {
+    if (wordToGuessStr[j] === keyPressedStr)  { 
+      answerArrayArr[j] = keyPressedStr;
+      remainingLettersInt--;
+      letterCompareBoo = true;
+    }
+    else {
+      missedLettersArr.push(keyPressedStr);
+      guessesLeftInt--;
+      console.log("Guesses Left:" + guessesLeftInt); 
     }
   }
 }
+
+function validateInput () {
+  if (keyPressedStr === null {
+    alert("Please select a single letter");
+    validateInput();
+  }
+  else if (keyPressedStr.length !== 1) {
+    alert("Please select a single letter");
+    validateInput();
+  }
+  else { 
+    remainingLettersInt = wordToGuessStr.length;
+    updateAnswerArray(); 
+  }
+}
+
+fucntion coreGameLogic () {
+  while (remainingLettersInt > 0) {
+    if (letterCompareBoo) {
+      for (var k = 0; k < numSpacesInt; k++) {
+        if (wordToGuessStr[j] === keyPressedStr) {
+            answerArrayArr[j] = keyPressedStr;
+            console.log("Answer Array (during loop):" + answerArrayArr);
+
+        }
+        else {  
+            missedLettersArr.push(keyPressedStr);
+            console.log(missedLettersArr);
+            guessesLeftInt--;
+            console.log("Guesses Left:" + guessesLeftInt); 
+
+        }// after this runs, either keep guessing of win/lose state
+      }
+    }
+  }
+ write handler for win/loose /continue
+
+/*
+0. Enable Keyup and on click events
+1. Pick Random Word
+2. Take the first letter guess from player
+3. check guess against random word
+4 .keep track of letters guessed
+5. display progress on screen like hangman (e.g. with spaces and insert letters where they need to be)
+6. Finish game - either word is guessed or palyer uses all 10 guesses
+*/
