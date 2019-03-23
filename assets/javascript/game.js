@@ -31,7 +31,7 @@ var winCountInt = 0; // win counter
 var letterCompareBoo = true;  // boolean 
 
 /* ------------- End variable declarations  ------------------- */
-function startGame () { };
+
 /* Event handlers */
 $("#start").on("click", startGame); // select button and give an onclick function -- jQuery
 
@@ -42,44 +42,37 @@ $(document).keyup(function(event) { // Capture keyup event w/ jQuery
   console.log('Your letter is ' + keyPressedStr); // for testing... 
 });
 
- $("#currentword").text(wordToGuessStr);
- $("#keytyped").text(keyPressedStr);
- $("#guessesremain").text(guessesLeftInt);
- $("#lettersguessed").text(missedLettersArr.join("  "));
- $("#winscore").text(winCountInt);
- $("#losescore").text(lossCountInt);
- $("#puzzle").text(answerArrayArr.join(" "));
-
- wordToGuessStr = wordsListArr[Math.floor(Math.random() * wordsListArr.length)];
- console.log("Computer's selected word " + wordToGuessStr);
- wordLettersArr = wordToGuessStr.split("");
- console.log("these are the letters = " + wordLettersArr);
-
-
-function populateAnswerArray () {
- for ( var i = 0; i < wordToGuessStr.length; i++) {
-   answerArrayArr[i] = "_";
- }
- $("#puzzle").text(answerArrayArr.join(" "));
+function selectWord () { 
+  wordToGuessStr = wordsListArr[Math.floor(Math.random() * wordsListArr.length)];
+    console.log("Computer's selected word " + wordToGuessStr);
+  wordLettersArr = wordToGuessStr.split(""); // may not need
+    console.log("these are the letters = " + wordLettersArr);
 }
 
-function updateAnswerArray () {
-  for (var j = 0; j < wordToGuessStr.length; j++) {
-    if (wordToGuessStr[j] === keyPressedStr)  { 
-      answerArrayArr[j] = keyPressedStr;
-      remainingLettersInt--;
-      letterCompareBoo = true;
-    }
-    else {
-      missedLettersArr.push(keyPressedStr);
-      guessesLeftInt--;
-      console.log("Guesses Left:" + guessesLeftInt); 
-    }
-  }
+function startGame () {
+
+}
+
+function endGame () {
+   
+}
+
+function resetVariables () {
+
+}
+
+function displayValues () {
+  $("#currentword").text(wordToGuessStr);
+  $("#keytyped").text(keyPressedStr);
+  $("#guessesremain").text(guessesLeftStr);
+  $("#lettersguessed").text(missedLettersArr.join("  "));
+  $("#winscore").text(winCountStr);
+  $("#losescore").text(lossCountStr);
+  $("#puzzle").text(answerArrayArr.join(" "));
 }
 
 function validateInput () {
-  if (keyPressedStr === null {
+  if (keyPressedStr === null) {
     alert("Please select a single letter");
     validateInput();
   }
@@ -89,30 +82,39 @@ function validateInput () {
   }
   else { 
     remainingLettersInt = wordToGuessStr.length;
-    updateAnswerArray(); 
+    evaluateGuess(); 
   }
 }
 
-fucntion coreGameLogic () {
+function populateAnswerArray () {
+ for ( var i = 0; i < wordToGuessStr.length; i++) {
+   answerArrayArr[i] = "_";
+ }
+ $("#puzzle").text(answerArrayArr.join(" "));
+}
+
+function evaluateGuess() {
   while (remainingLettersInt > 0) {
-    if (letterCompareBoo) {
-      for (var k = 0; k < numSpacesInt; k++) {
-        if (wordToGuessStr[j] === keyPressedStr) {
-            answerArrayArr[j] = keyPressedStr;
-            console.log("Answer Array (during loop):" + answerArrayArr);
-
-        }
-        else {  
-            missedLettersArr.push(keyPressedStr);
-            console.log(missedLettersArr);
-            guessesLeftInt--;
-            console.log("Guesses Left:" + guessesLeftInt); 
-
-        }// after this runs, either keep guessing of win/lose state
+    for (var j = 0; j < wordToGuessStr.length; j++) {
+      if (wordToGuessStr[j] === keyPressedStr)  { 
+        answerArrayArr[j] = keyPressedStr;
+        remainingLettersInt--;
+        letterCompareBoo = true;
+      }
+      else {
+        missedLettersArr.push(keyPressedStr);
       }
     }
   }
- write handler for win/loose /continue
+}
+
+function checkGameState () {
+  if (answerArrayArr.indexOf("_") === -1) { // entire word is processed; no __
+    //check for game state change
+  }
+
+
+}
 
 /*
 0. Enable Keyup and on click events
