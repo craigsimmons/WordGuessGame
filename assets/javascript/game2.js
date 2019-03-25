@@ -138,18 +138,7 @@ function evaluateGuess() {
   $("#guessesremain").text(guessesLeftStr);
   $("#lettersguessed").text(missedLettersArr.join("  "));
 }
-  function gameState () {
-    if (answerArrayArr.indexOf("_") === -1) { // checks array to see if there are any "_" if none, word was guessed
-      winGame();
-    } 
-    else if (answerArrayArr.indexOf("_") !== -1) {
-      
-      loseGame();
-    }
-    else {
-      continueGame();
-    }
-}
+ 
   
 /*
 0. Enable Keyup and on click events

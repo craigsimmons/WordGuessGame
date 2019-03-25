@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- <link rel="stylesheet" href="./assets/css/reset.css">   -->
-    
+    <style>
+    * {
+        border: lightgray 1px solid !important;
+    }
+    </style>
   
 </head>
 <body>
@@ -45,26 +49,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <br>
-                    <p class="displaytext crazy">Mystery Word: <span id="puzzle" class="displayfont"> _ _ _ _ _ _ _ _ _</span></p>
-                    <p class="displaytext crazy">Letters Guessed: <span id="lettersguessed" class="displayfont"> null </span></p>
-                    <p class="displaytext crazy">Guesses Remaining: <span id="guessestaken" class="displayfont"> null </span></p>
+                    <p class="displaytext crazy">Mystery Word: <span id="puzzle" class="displayfont"></span></p>
+                    <p class="displaytext crazy">Letters Guessed: <span id="lettersguessed" class="displayfont">  </span></p>
+                    <p class="displaytext crazy">Guesses Remaining: <span id="guessestaken" class="displayfont">  </span></p>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12">
                            
-                            <p id="status" class="display-4 crazy displayfont">      
-                                Sample Status
+                            <p id="status" class="display-4 crazy displayfont">     
                             </p>
                         </div>
                     </div>
                     <div class="row"><br></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="displaytext crazy">Wins: <span id="winscore" class="displayfont"> null </span></p>
+                            <p class="displaytext crazy">Wins: <span id="winscore" class="displayfont"> 0</span></p>
                         </div>
                         <div class="col-md-6">
-                            <p class="displaytext crazy">Losses: <span id="losescore" class="displayfont"> null </span></p>
+                            <p class="displaytext crazy">Losses: <span id="losescore" class="displayfont"> 0</span></p>
                         </div>
                     </div>
                     
