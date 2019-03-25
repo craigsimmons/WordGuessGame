@@ -13,72 +13,66 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- <link rel="stylesheet" href="./assets/css/reset.css"> -->
-
+    <!-- <link rel="stylesheet" href="./assets/css/reset.css">   -->
     
+  
 </head>
 <body>
-    <div class="container ltbluebg ">
-        <div class="row"> 
-            <div class="col-md-8">
-                <h1 class="text-center display-2 crazy">Word Guess:</h1>
-                <p class="text-center crazy">
-                <span class="downsize text-primary">Infectious</span>
-                <span class="downsize text-success">Disease</span>
-                <span class="downsize text-danger">Edition</span>
-                </p>
+    <div class="container">
+        <div class="jumbotron bg">
+            <div class="row"> 
+                <div class="col-md-9">
+                    <h1 class="display-4 crazy">Mystery Word Guess:</h1>
+                    <p class="crazy">
+                        <span class="downsize">Infectious </span>
+                        <span class="downsize"> Disease </span>
+                        <span class="downsize"> Edition</span>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                        <div clas="row">
+                            <button id="start" type="button" class="btn btn-success crazy">Start Game</button>
+                            <br>
+                        </div>
+                            <br>    
+                        <div clas="row"> 
+                            <button id="end" type="button" class="float right btn btn-primary crazy">End Game</button>
+                            <br>
+                        </div>
+                </div> 
             </div>
-            <div class="align-middle col-md-4">
-                <img src="./assets/images/bacteria.jpg" height="100%" width="100%" alt="Image of rampaging bacteria">
-            </div>
-        </div>
-        <div class="jumbotron ltbluebg">
+        
             <div class="row">
                 <div class="col-md-6">
                     <br>
-                    <p class="text-center displaytext crazy">How to Play:</p>
-                    <p class="instructiontext crazy">Try to guess the mystery word! This site will randomly select a word 
-                        and display dashes in place of letters.<br><br> 
-                        Guess each letter in the word to win. If you choose a 
-                        letter that's not in the mystery word, you'll lose a guess and will need to select again. 
-                        <br><br> If you make 10 incorrect guesses before you solve the mystery word, 
-                        you'll lose the game and will almost certinly contract one of the game's infections. 
-                        <br><br> Click the Start button to play. Select letters with the keybord.
-                    </p>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-4">
-                            <button id="start" type="button" class="float-left btn btn-success crazy">Start Game</button>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-4">
-                                <button id="end" type="button" class="float-right btn btn-danger crazy">End Game</button>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
+                    <p class="displaytext crazy">Mystery Word: <span id="puzzle" class="displayfont"> _ _ _ _ _ _ _ _ _</span></p>
+                    <p class="displaytext crazy">Letters Guessed: <span id="lettersguessed" class="displayfont"> null </span></p>
+                    <p class="displaytext crazy">Guesses Remaining: <span id="guessestaken" class="displayfont"> null </span></p>
                 </div>
-
                 <div class="col-md-6">
-                        <br>
-                        <h1 class="text-center downsize crazy">Mystery Word: </h1><br>
-                        <p class="text-center downsize crazy"><span class="bg-warning puzzle">_ _ _ _ _ _ _</span></p>
-                       <br>
-                       <p class="displaytext crazy">Letters Guessed: <span class="lettersguessed"></span></p>
-                        <p class="displaytext crazy">Incorrect Guesses: <span class="guessestaken"></span></p>
-                        <p class="displaytext crazy">Wins: <span class="winscore"></span></p>
-                        <p class="displaytext crazy">Losses: <span class="losescore"></span></p>
+                    <div class="row">
+                        <div class="col-md-12">
+                           
+                            <p id="status" class="display-4 crazy displayfont">      
+                                Sample Status
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row"><br></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="displaytext crazy">Wins: <span id="winscore" class="displayfont"> null </span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="displaytext crazy">Losses: <span id="losescore" class="displayfont"> null </span></p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-    <div class="text-center row">
-            <p class="float-left displaytext crazy">Display Current Word (for testing):
-                <mark class="currentword">used for testing</mark></p>
-            <br><br>
-            <p class="float-right displaytext crazy">Type a key (for testing):
-                <mark class="keytyped">used for testing</mark></p>
-
+        </div> 
     </div>
-
+    
     <!-- Link to my javascript file -->
     <script src="./assets/javascript/game.js"></script>
 </body>
