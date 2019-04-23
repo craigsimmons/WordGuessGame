@@ -30,7 +30,6 @@ var winCountInt = 0;
 // is the first time the user has guessed a letter
 var firstTime = true;
 var isInWord = false;
-var rebateGuess = false;
 
 $('#start').on('click', function(event) {
     event.preventDefault();
@@ -42,20 +41,21 @@ $('#end').on('click', function(event) {
     endGame();
 });
 
-$(document).keyup(function(event) {
-    event.preventDefault();
+$(document).keyup(function() {
+    //document.addEventListener("keyup", function(event) {
+    // document.removeEventListener("keyup", listener, useCapture)
     keyPressed = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(keyPressed);
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         keyPressed = event.key;
         $("#letter").text(keyPressed);
+        noDuplicateGuesses(keyPressed)
         evaluateGuess(keyPressed);
     } else {
         console.log("not a char we want");
         event.preventDefault();
     }
 });
-funct
 
 function startGame() {
     $("#status").text("Please type a letter");
@@ -80,43 +80,45 @@ function selectWord() {
 }
 
 function evaluateGuess(keyPressed) {
-    rebateGuess = false;
+    guessesLeft--;
     for (var i = 0; i < selectedWord.length; i++) {
+        console.log("ln81-letter: " + selectedWord[i] + " index: " + i);
         if (selectedWord[i] === keyPressed) {
             answerArr[i] = selectedWord[i];
             $("#puzzle").text(answerArr);
             remainingLetters--;
-            rebateGuess = true;
+            console.log("Guesses: " + guessesLeft);
+            console.log("ltrsLeft: " + remainingLetters);
         }
+        console.log("Guesses: " + guessesLeft);
+        console.log("ltrsLeft: " + remainingLetters);
     }
+    console.log(playerGuesses);
     playerGuesses.push(keyPressed);
     $("#lettersguessed").text(playerGuesses);
-    if (rebateGuess === false) {
-        guessesLeft--;
-        if (guessesLeft === 0) {
-            loseCondition();
+}
+
+function noDuplicateGuesses(keyPressed) {
+    var noDupeArray = [];
+    console.log(noDupeArray);
+    if (noDupeArray === undefined) {
+        console.log("First Time");
+        noDupeArray.push(keyPressed);
+        console.log(noDupeArray);
+    } else {
+        for (let j = 0; j <= noDupeArray.length; j++) {
+            if (noDupeArray[j] === keyPressed) {
+                console.log("Duplicate");
+                $("#status").text("Duplicate guess. Please choose another letter");
+                break;
+            }
         }
-    }
-    $("#guessestaken").text(guessesLeft);
-    if (remainingLetters === 0) {
-        winCondition();
+        noDupeArray.push(keyPressed);
+        console.log(noDupeArray);
     }
 }
 
-function winCondition() {
-    winCountInt++;
-    $("#winscore").text(winCountInt);
-    $("#status").text("You're a winner!");
-    guessesLeft = 10;
-    $("#guessestaken").text(guessesLeft);
-    playerGuesses = [];
-}
+function thingstoreset() {
+    noDupeArray;
 
-function loseCondition() {
-    lossCountInt++;
-    $("#losescore").text(lossCountInt);
-    $("#status").text("You're a loser!");
-    guessesLeft = 10;
-    $("#guessestaken").text(guessesLeft);
-    playerGuesses = [];
 }
