@@ -31,10 +31,6 @@ var rebateGuess = false;
 var winloss = false;
 var noDupeArray = [];
 
-$('#start').attr("disabled", false);
-$('#reset').attr("disabled", false);
-$(document).off('keyup');
-
 $('#start').on('click', function(event) {
     event.preventDefault();
     startGame();
@@ -127,7 +123,7 @@ function validateEntry(keyPressed) {
         $("#letter").text(keyDisplay);
         isDuplicate(keyPressed);
     } else {
-        $("#status").text('Please select a letter');
+        $("#status").text('Select a letter');
         return;
     }
 }
@@ -140,7 +136,7 @@ function isDuplicate(keyPressed) {
     } else {
         for (let j = 0; j <= noDupeArray.length; j++) {
             if (noDupeArray[j] === keyPressed) {
-                $("#status").text('Duplicate guess. Select another letter');
+                $("#status").html('Duplicate guess <br>Try again');
                 return;
             }
         }
@@ -156,9 +152,8 @@ function evaluateGuess(keyPressed) {
     for (var i = 0; i < selectedWord.length; i++) {
         if (selectedWord[i] === keyPressed) {
             answerArr[i] = (" " + selectedWord[i]);
-            // $("#puzzle").text(answerArr);
-            $("#puzzle").text(answerArr.join("  "));
-            $("#status").text("Correct guess. Select again.");
+            $('#puzzle').text(answerArr.join(' '));
+            $('#status').text('Correct guess. Select again.');
             remainingLetters--;
             rebateGuess = true;
         }
@@ -168,8 +163,8 @@ function evaluateGuess(keyPressed) {
     }
     if (rebateGuess === false) {
         guessesLeft--;
-        $("#guessestaken").text(guessesLeft);
-        $("#status").text("Incorrect guess. Select again.");
+        $('#guessestaken').text(guessesLeft);
+        $('#status').text('Incorrect guess. Try again.');
         if (guessesLeft === 0) {
             loseCondition();
         }
@@ -185,7 +180,7 @@ function winCondition() {
     winloss = true;
     winCountInt++;
     $("#winscore").text(winCountInt);
-    $("#status").html('<span class="winner">You won. Congratulations!<br>Click "Start" to play again.</span>');
+    $("#status").html('<span class="winner">You won!<br>Click "Start" to play again.</span>');
     // $("#letter").text('');
     displayWord(winloss);
     $(document).off('keyup');
