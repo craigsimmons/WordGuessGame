@@ -15,7 +15,7 @@ const masterList = ["pneumonia",
     "rubella",
     "malaria",
     "typhus",
-    "tuberculosis"
+    "leukemia"
 ];
 var wordsList = masterList.slice(0);
 var selectedWord = "";
@@ -28,7 +28,12 @@ var remainingLetters;
 var lossCountInt = 0;
 var winCountInt = 0;
 var rebateGuess = false;
+var winloss = false;
 var noDupeArray = [];
+
+$('#start').attr("disabled", false);
+$('#reset').attr("disabled", false);
+$(document).off('keyup');
 
 $('#start').on('click', function(event) {
     event.preventDefault();
@@ -40,13 +45,12 @@ $('#reset').on('click', function(event) {
     resetGame();
 });
 
-$(document).keyup(function(event) {
-    event.preventDefault();
-    keyPressed = String.fromCharCode(event.keyCode).toLowerCase();
-    validateEntry(keyPressed);
-});
-
 function startGame() {
+    $(document).on('keyup', function(event) {
+        event.preventDefault();
+        keyPressed = String.fromCharCode(event.keyCode).toLowerCase();
+        validateEntry(keyPressed);
+    });
     resetVariables()
     $("#wordselect").text(selectedWord);
     $("#guessestaken").text(guessesLeft);
@@ -67,9 +71,10 @@ function resetGame() {
     $("#lettersguessed").text(playerGuesses);
     $("#letter").text(keyPressed);
     $("#puzzle").text(answerArr);
-    $("#status").text('Game over: Click "Start Game" to begin');
+    $("#status").html('Game over!<br>Click "Start" to begin');
     //disable reset btn
 }
+
 function resetVariables() {
     playerGuesses = [];
     noDupeArray = [];
@@ -79,13 +84,15 @@ function resetVariables() {
     keyPressed = "";
     answerArr = [];
     rebateGuess = false;
+    winloss = false;
 }
 
 function resetScore() {
-    $("#losescore").text(lossCountInt);
-    $("#winscore").text(winCountInt);
     lossCountInt = 0;
     winCountInt = 0;
+    $("#losescore").text(lossCountInt);
+    $("#winscore").text(winCountInt);
+
 }
 
 function selectWord() {
@@ -94,47 +101,64 @@ function selectWord() {
     wordsList.splice(wordListIndex, 1);
     $("#wordselect").text(selectedWord);
     for (var i = 0; i < selectedWord.length; i++) {
-        answerArr[i] = "_";
+        answerArr[i] = " _ ";
     }
-    $("#puzzle").text(answerArr.join(" , "));
-    remainingLetters = selectedWord.length; 
+    $("#puzzle").text(answerArr.join(" "));
+    remainingLetters = selectedWord.length;
+}
+
+function displayWord(winloss) {
+    $("#wordselect").text(selectedWord);
+    for (var i = 0; i < selectedWord.length; i++) {
+        answerArr[i] = ('' + selectedWord[i] + '');
+    }
+    var style = answerArr.join(" ");
+    if (winloss === true) {
+        $("#puzzle").html('<span class="winner">' + style + '</span>');
+    } else {
+        $("#puzzle").html('<span class="loser">' + style + '</span>');
+    }
 }
 
 function validateEntry(keyPressed) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         keyPressed = event.key;
-        $("#letter").text(keyPressed);
+        var keyDisplay = keyPressed.toUpperCase();
+        $("#letter").text(keyDisplay);
         isDuplicate(keyPressed);
-    } 
-    else {
-        console.log("not a char we want");
-       return;
+    } else {
+        $("#status").text('Please select a letter');
+        return;
     }
 }
+
 function isDuplicate(keyPressed) {
     if (noDupeArray.length === 0) {
-        noDupeArray.push(keyPressed); 
+        noDupeArray.push(keyPressed);
+        $("#status").text('Please select a letter');
         evaluateGuess(keyPressed);
-    }
-    else {
+    } else {
         for (let j = 0; j <= noDupeArray.length; j++) {
             if (noDupeArray[j] === keyPressed) {
-                $("#status").text("Duplicate guess. Please choose another letter");
-                return;  
+                $("#status").text('Duplicate guess. Select another letter');
+                return;
             }
         }
-        noDupeArray.push(keyPressed); 
+        noDupeArray.push(keyPressed);
         evaluateGuess(keyPressed);
     }
 }
 
 function evaluateGuess(keyPressed) {
     updatePlayerGuesses();
+    $("#status").text('Please select a letter');
     rebateGuess = false;
     for (var i = 0; i < selectedWord.length; i++) {
         if (selectedWord[i] === keyPressed) {
-            answerArr[i] = selectedWord[i];
-            $("#puzzle").text(answerArr);
+            answerArr[i] = (" " + selectedWord[i]);
+            // $("#puzzle").text(answerArr);
+            $("#puzzle").text(answerArr.join("  "));
+            $("#status").text("Correct guess. Select again.");
             remainingLetters--;
             rebateGuess = true;
         }
@@ -145,6 +169,7 @@ function evaluateGuess(keyPressed) {
     if (rebateGuess === false) {
         guessesLeft--;
         $("#guessestaken").text(guessesLeft);
+        $("#status").text("Incorrect guess. Select again.");
         if (guessesLeft === 0) {
             loseCondition();
         }
@@ -157,14 +182,21 @@ function updatePlayerGuesses() {
 }
 
 function winCondition() {
+    winloss = true;
     winCountInt++;
     $("#winscore").text(winCountInt);
-    $("#status").text("You're a winner!");
-    startGame
-    }
+    $("#status").html('<span class="winner">You won. Congratulations!<br>Click "Start" to play again.</span>');
+    // $("#letter").text('');
+    displayWord(winloss);
+    $(document).off('keyup');
+}
 
 function loseCondition() {
+    winloss = false;
+    $(document).off('keyup');
+    displayWord(winloss)
     lossCountInt++;
     $("#losescore").text(lossCountInt);
-    $("#status").text("You're a loser!");
+    $("#status").html('<span class="loser">You lost!<br>Click "Start" to play again.</span>');
+    //$("#letter").text('');
 }
