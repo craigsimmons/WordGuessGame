@@ -1,31 +1,165 @@
+.crazy {
+    font-family: 'Walter Turncoat', cursive;
+    color: black;
+    font-size: 18px;
+}
 
-    .crazy {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    color: yellow;
-    }
+.guessfont {
+    font-size: 180px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+}
 
-    .bg {
-    background-color: black;
-    }
+.guess {
+    height: 200px;
+    width: 200px;
+}
 
-    .downsize {
+.winner {
+    color: rgb(25, 255, 25);
+    font-weight: 900;
+}
+
+.loser {
+    color: rgb(255, 0, 0);
+    font-weight: 900;
+}
+
+.topjumbo {
+    width: 780px;
+    background-color: rgba(21, 5, 120, .9);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 10px 50px 15px 50px;
+    border-radius: 30px;
+    border: 3px solid #78C0E0;
+}
+
+.btmjumbo {
+    width: 780px;
+    background-color: rgba(21, 5, 120, .9);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0px 50px 0px 50px;
+    border-radius: 30px;
+    border: 3px solid #78C0E0;
+}
+
+.toprocker {
+    font-size: 60px;
+    color: white;
+    font-display: bolder;
+    margin: 0 auto;
+}
+
+.btmrocker {
+    font-size: 32px;
+    color: white;
+    font-display: bold;
+    margin: 0 auto;
+}
+
+.displaytext {
+    font-size: 24px;
+    vertical-align: middle;
+    color: #78C0E0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    line-height: 18px;
+    margin: 0 auto;
+}
+
+.mysterydisplay {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #78C0E0;
+    line-height: .9;
+    padding-top: 25px;
+    margin: 0 auto;
+}
+
+.mystery {
+    font-size: 55px;
+    color: white;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    line-height: 60px;
+    margin-left: 25px;
+    width: 100%;
+}
+
+.lettersguessed {
+    padding-left: 20px;
+    vertical-align: baseline;
+    font-size: 30px;
+    color: white;
+}
+
+.guessestaken {
+    padding-left: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    vertical-align: baseline;
+    font-size: 30px;
+    color: white;
+}
+
+.winscore {
+    padding-left: 20px;
+    vertical-align: baseline;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.losescore {
+    padding-left: 20px;
+    vertical-align: baseline;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.spacer {
+    height: 12px;
+}
+
+.mysterydiv {
+    width: 100%;
+}
+
+.downsize {
     font-size: 24px;
     font-display: bold;
-    }
+}
 
-    .statusmsg {
-        font-size: 24px;
-        font-display: bold;
-        color: yellow;
-    }
-    .displaytext {
-        font-size: 20px;
-        font-display: bolder;
-    }
+.statusmsg {
+    font-size: 36px;
+    font-display: bold;
+    color: white;
+    padding-left: 15px;
+    height: 100px;
+    /*border: 2px solid #78C0E0; */
+}
 
-    .displayfont {
-        color: white;
-        
-    }
- 
+.displaytext {
+    font-size: 20px;
+    color: #78C0E0;
+    font-display: bolder;
+}
 
+.displayfont {
+    color: white;
+}
