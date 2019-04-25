@@ -136,7 +136,7 @@ function isDuplicate(keyPressed) {
     } else {
         for (let j = 0; j <= noDupeArray.length; j++) {
             if (noDupeArray[j] === keyPressed) {
-                $("#status").html('Duplicate guess <br>Try again');
+                $("#status").html('Duplicate guess. Try again');
                 return;
             }
         }
